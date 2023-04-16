@@ -7,8 +7,17 @@ before_install:
 script:
   - docker run -e CI=true abdoultodocker/react-test npm run test
 
+#buil prod images
 after_success:
   - docker build -t abdoultodocker/client ./client
   - docker build -t abdoultodocker/nginx ./nginx
   - docker build -t abdoultodocker/worker ./worker
   - docker build -t abdoultodocker/server ./server
+
+#push images
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push abdoultodocker/client
+  - docker push abdoultodocker/nginx
+  - docker push abdoultodocker/worker
+  - docker push abdoultodocker/server
+
