@@ -1,0 +1,14 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t  abdoultodocker/react-test -f ./client/Dockerfile.dev ./client
+script:
+  - docker run -e CI=true abdoultodocker/react-test npm run test
+
+after_success:
+  - docker build -t abdoultodocker/client ./client
+  - docker build -t abdoultodocker/nginx ./nginx
+  - docker build -t abdoultodocker/worker ./worker
+  - docker build -t abdoultodocker/server ./server
