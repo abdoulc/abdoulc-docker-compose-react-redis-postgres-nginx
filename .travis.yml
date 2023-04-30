@@ -7,7 +7,7 @@ before_install:
 script:
   - docker run -e CI=true abdoultodocker/react-test npm run test
 
-#buil prod images
+#buil prod images --
 after_success:
   - docker build -t abdoultodocker/client ./client
   - docker build -t abdoultodocker/nginx ./nginx
