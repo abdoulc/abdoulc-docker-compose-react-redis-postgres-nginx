@@ -5,7 +5,7 @@ export default ()=>{
     return(
         <div>
             Custom page 
-            <Link to="/" >Go to home</Link>
+            <Link to="/" >Go back to home</Link>
         </div>
     );
 };
