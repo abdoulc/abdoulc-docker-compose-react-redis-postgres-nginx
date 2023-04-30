@@ -43,7 +43,7 @@ class Fibonacci extends Component{
         for(let key in this.state.values){
             entries.push(
                 <div key={key}>
-                    For index {key} Result is {this.state.values[key]}
+                    ** For index {key} Result is {this.state.values[key]}
                 </div>
             )
         }
